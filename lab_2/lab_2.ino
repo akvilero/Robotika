@@ -81,7 +81,7 @@ void loop()
   // handle button press
   if(btnPressed){
     num = (num + 1) % 10;
-    showNumber(numToBits(num));
+    //showNumber(numToBits(num));
     EEPROM.write(EEPROM_NUM_ADDR, num);
     
     btnPressed = false;
@@ -140,7 +140,7 @@ void showNumber(byte byteNum){
 // external interrupt:button press
 void handleButton() {
   unsigned long t = millis();
-  if (t - lastInterruptTime > 200) {  // debounce time 200ms
+  if (t - lastInterruptTime > 40) {  // debounce time
     btnPressed = true;
   }
   lastInterruptTime = t;
